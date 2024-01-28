@@ -8,7 +8,7 @@ defmodule HipcallWhichtech.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      {Finch, name: HipcallWhichtech}
+      {Finch, name: HipcallWhichtechFinch}
       # Starts a worker by calling: HipcallWhichtech.Worker.start_link(arg)
       # {HipcallWhichtech.Worker, arg}
     ]
