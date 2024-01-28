@@ -2,6 +2,7 @@
 
 ## v0.1.0 (2024-01-28)
 
+- Add `Woocommerce` detector
 - Add `Wordpress` detector
 - Add `Hubspot` detector
   Add `Shopify` detector
