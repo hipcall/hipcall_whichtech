@@ -81,8 +81,13 @@ defmodule HipcallWhichtech do
     end
   end
 
-  defp set_detectors(_options \\ []) do
-    {:ok, @detectors}
+  defp set_detectors(options) do
+    detectors =
+      case Keyword.get(options, :exclude) do
+        nil -> @detectors
+      end
+
+    {:ok, detectors}
   end
 
   defp build(html_body, detectors) do
