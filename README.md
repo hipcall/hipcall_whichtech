@@ -1,6 +1,6 @@
 # HipcallWhichtech
 
-**TODO: Add description**
+Find out what the website is built with using this package.
 
 ## Installation
 
@@ -15,7 +15,16 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/hipcall_whichtech>.
+## Use
+
+Documentation for using, please check the `HipcallWhichtech` module.
+
+## Hipcall
+
+All [Hipcall](https://www.hipcall.com/en-gb/) libraries:
+
+- [HipcallDisposableEmail](https://github.com/hipcall/hipcall_disposable_email) - Simple library checking the email's domain is disposable or not.
+- [HipcallDeepgram](https://github.com/hipcall/hipcall_deepgram) - Unofficial Deepgram API Wrapper written in Elixir.
+- [HipcallOpenai](https://github.com/hipcall/hipcall_openai) - Unofficial OpenAI API Wrapper written in Elixir.
+- [HipcallWhichtech](https://github.com/hipcall/hipcall_whichtech) - Find out what the website is built with.
 
