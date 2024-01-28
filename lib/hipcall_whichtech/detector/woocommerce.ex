@@ -1,9 +1,7 @@
-defmodule HipcallWhichtech.Detector.Wordpress do
+defmodule HipcallWhichtech.Detector.Woocommerce do
   @patters [
-    "/wp-content/",
-    "/wp-includes/",
-    "wp-json",
-    ~s(generator" content="WordPress)
+    ~s(/plugins/woocommerce/assets/),
+    ~s(<meta name="generator" content="WooCommerce)
   ]
 
   def detect(html_source) do

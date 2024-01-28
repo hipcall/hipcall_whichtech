@@ -19,6 +19,20 @@ end
 
 Documentation for using, please check the `HipcallWhichtech` module.
 
+### Example
+
+    iex> HipcallWhichtech.detect("https://woo.com/")
+    ...> {:ok, [:wordpress, :woocommerce]}
+    iex> HipcallWhichtech.detect("https://www.bulutfon.com/")
+    ...> {:ok, [:wordpress]}
+
+## Detectors
+
+- [x] Hubspot
+- [x] Shopify
+- [x] Woocommerce
+- [x] Wordpress
+
 ## Hipcall
 
 All [Hipcall](https://www.hipcall.com/en-gb/) libraries:
