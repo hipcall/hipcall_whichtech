@@ -21,10 +21,12 @@ Documentation for using, please check the `HipcallWhichtech` module.
 
 ### Example
 
-    iex> HipcallWhichtech.detect("https://woo.com/")
-    ...> {:ok, [:wordpress, :woocommerce]}
-    iex> HipcallWhichtech.detect("https://www.bulutfon.com/")
-    ...> {:ok, [:wordpress]}
+```elixir
+iex> HipcallWhichtech.detect("https://woo.com/")
+iex> {:ok, [:wordpress, :woocommerce]}
+iex> HipcallWhichtech.detect("https://www.bulutfon.com/")
+iex> {:ok, [:wordpress]}
+```
 
 ## Detectors
 
