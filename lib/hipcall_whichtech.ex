@@ -3,10 +3,34 @@ defmodule HipcallWhichtech do
   Documentation for `HipcallWhichtech`.
   """
 
+  @type url() :: String.t() | URI.t()
+
+  @detect_schema [
+    exclude: [
+      type: {:list, :atom},
+      doc: """
+      A list of detector which are exclude
+      """,
+      default: []
+    ],
+    only: [
+      type: {:list, :atom},
+      doc: """
+      Detector that only look
+      """,
+      default: []
+    ]
+  ]
+
   @detectors [
     %{
       name: :wordpress,
       module: HipcallWhichtech.Detector.Wordpress,
+      categories: [:cms]
+    },
+    %{
+      name: :webflow,
+      module: HipcallWhichtech.Detector.Webflow,
       categories: [:cms]
     },
     %{
@@ -31,35 +55,52 @@ defmodule HipcallWhichtech do
 
   ## Examples
 
-      iex> HipcallWhichtech.detect("https://woo.com/")
+      iex> {:ok, html_body} = HipcallWhichtech.request("https://www.bulutfon.com/")
+      iex> HipcallWhichtech.detect(html_body)
+      ...> {:ok, [:wordpress]}
+
+      iex> {:ok, html_body} = HipcallWhichtech.request("https://woo.com/")
+      iex> HipcallWhichtech.detect(html_body)
       ...> {:ok, [:wordpress, :woocommerce]}
-      iex> HipcallWhichtech.detect("https://www.bulutfon.com/")
+
+  You can set the excluded detectors. For example `exclude: [:woocommerce]` options.
+
+      iex> {:ok, html_body} = HipcallWhichtech.request("https://woo.com/")
+      iex> HipcallWhichtech.detect(html_body, exclude: [:woocommerce])
+      ...> {:ok, [:wordpress]}
+
+  You can also set one or more detectors. For example `only: [:wordpress]` options.
+  Package check only `wordpress` with this option.
+
+      iex> {:ok, html_body} = HipcallWhichtech.request("https://woo.com/")
+      iex> HipcallWhichtech.detect(html_body, only: [:wordpress])
       ...> {:ok, [:wordpress]}
 
   ## Arguments
 
-  - `url` : a valid url
-  - `options` : list
+    - `html_body` : html code
+    - `options` : list
 
   ## Options
 
-  TODO
+  #{NimbleOptions.docs(@detect_schema)}
 
   ## Raises
 
-  There is no exception.
+    - Raise `NimbleOptions.ValidationError` if params are not valid.
 
   ## Returns
 
-  - `{:ok, list()}`
-  - `{:error, any()}`
+    - `{:ok, list()}`
+    - `{:error, any()}`
 
   """
-  @spec detect(url :: String.t(), options :: Keyword.t()) ::
+  @spec detect(html_body :: String.t(), options :: Keyword.t()) ::
           {:ok, list()} | {:error, any()}
-  def detect(url, options \\ []) do
-    with {:ok, html_body} <- html(url),
-         {:ok, detectors} <- set_detectors(options),
+  def detect(html_body, options \\ []) do
+    NimbleOptions.validate!(options, @detect_schema)
+
+    with {:ok, detectors} <- set_detectors(options),
          result <- build(html_body, detectors) do
       {:ok, result}
     else
@@ -68,7 +109,32 @@ defmodule HipcallWhichtech do
     end
   end
 
-  defp html(url) do
+  @doc """
+  Request and get html body from an URL.
+
+  ## Examples
+
+      iex> {:ok, html_body} = request("https://woo.com/")
+
+  ## Arguments
+
+    - url: String
+
+  ## Options
+
+    - There is no option.
+
+  ## Raises
+
+    - There is no exception.
+
+  ## Returns
+
+    - `{:ok, binary()}`
+    - `{:error, any()}`
+  """
+  @spec request(url()) :: {:ok, String.t()} | {:error, any()}
+  def request(url) do
     case Finch.build(:get, url) |> Finch.request(HipcallWhichtechFinch) do
       {:ok, %Finch.Response{status: 200, body: body}} ->
         {:ok, body}
@@ -83,11 +149,31 @@ defmodule HipcallWhichtech do
 
   defp set_detectors(options) do
     detectors =
-      case Keyword.get(options, :exclude) do
-        nil -> @detectors
-      end
+      @detectors
+      |> exclude_detectors(Keyword.get(options, :exclude))
+      |> only_detectors(Keyword.get(options, :only))
 
     {:ok, detectors}
+  end
+
+  defp exclude_detectors(detectors, nil), do: detectors
+  defp exclude_detectors(detectors, []), do: detectors
+
+  defp exclude_detectors(detectors, only)
+       when is_list(only) and is_list(detectors) do
+    Enum.reject(detectors, fn detector ->
+      detector[:name] in only
+    end)
+  end
+
+  defp only_detectors(detectors, nil), do: detectors
+  defp only_detectors(detectors, []), do: detectors
+
+  defp only_detectors(detectors, exclude)
+       when is_list(exclude) and is_list(detectors) do
+    Enum.reject(detectors, fn detector ->
+      detector[:name] not in exclude
+    end)
   end
 
   defp build(html_body, detectors) do

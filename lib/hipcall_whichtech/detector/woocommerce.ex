@@ -1,4 +1,6 @@
 defmodule HipcallWhichtech.Detector.Woocommerce do
+  @moduledoc false
+
   @patters [
     ~s(/plugins/woocommerce/assets/),
     ~s(<meta name="generator" content="WooCommerce)
