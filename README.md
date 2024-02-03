@@ -10,7 +10,7 @@ by adding `hipcall_whichtech` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:hipcall_whichtech, "~> 0.1.0"}
+    {:hipcall_whichtech, "~> 0.2.0"}
   ]
 end
 ```
@@ -22,16 +22,20 @@ Documentation for using, please check the `HipcallWhichtech` module.
 ### Example
 
 ```elixir
-iex> HipcallWhichtech.detect("https://woo.com/")
-iex> {:ok, [:wordpress, :woocommerce]}
-iex> HipcallWhichtech.detect("https://www.bulutfon.com/")
-iex> {:ok, [:wordpress]}
+iex> {:ok, html_body} = HipcallWhichtech.request("https://woo.com/")
+iex> HipcallWhichtech.detect(html_body)
+...> {:ok, [:wordpress, :woocommerce]}
+
+iex> {:ok, html_body} = HipcallWhichtech.request("https://www.bulutfon.com/")
+iex> HipcallWhichtech.detect(html_body)
+...> {:ok, [:wordpress]}
 ```
 
 ## Detectors
 
 - [x] Hubspot
 - [x] Shopify
+- [x] Webflow
 - [x] Woocommerce
 - [x] Wordpress
 

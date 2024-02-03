@@ -1,4 +1,6 @@
 defmodule HipcallWhichtech.Detector.Wordpress do
+  @moduledoc false
+
   @patters [
     "/wp-content/",
     "/wp-includes/",

@@ -1,4 +1,6 @@
 defmodule HipcallWhichtech.Detector.Shopify do
+  @moduledoc false
+
   @patters [
     ~s(<meta name="shopify-checkout-api-token" content="),
     ~s(<meta id="shopify-digital-wallet" name="shopify-digital-wallet"),
