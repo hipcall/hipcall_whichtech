@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.3.0 (2024-02-03)
+## v0.3.0 (2024-02-13)
 
 - Update `finch` `0.17.0` => `0.18.0`
 - Add `Ikas` detector
