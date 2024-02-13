@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.0 (2024-02-03)
+
+- Update `finch` `0.17.0` => `0.18.0`
+
 ## v0.2.0 (2024-02-03)
 
 - Add `exclude: [:woocommerce, :wordpress]` options to `detect/2` method.
