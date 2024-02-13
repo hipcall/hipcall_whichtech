@@ -10,7 +10,7 @@ by adding `hipcall_whichtech` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:hipcall_whichtech, "~> 0.2.0"}
+    {:hipcall_whichtech, "~> 0.3.0"}
   ]
 end
 ```
@@ -38,6 +38,7 @@ iex> HipcallWhichtech.detect(html_body)
 - [x] Webflow
 - [x] Woocommerce
 - [x] Wordpress
+- [x] Ikas
 
 ## Hipcall
 
