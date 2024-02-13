@@ -47,6 +47,11 @@ defmodule HipcallWhichtech do
       name: :shopify,
       module: HipcallWhichtech.Detector.Shopify,
       categories: [:ecommerce]
+    },
+    %{
+      name: :ikas,
+      module: HipcallWhichtech.Detector.Ikas,
+      categories: [:ecommerce]
     }
   ]
 
