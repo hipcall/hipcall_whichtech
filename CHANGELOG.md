@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.4.0 (2024-02-24)
+
+- Add `DETECTORS.md` to `ex_doc`.
+- Add `Eticaretkur` detector
+- Add `Ideasoft` detector
+- Add `Platin Market` detector
+- Add `Ticimax` detector
+- Add `Tsoft` detector
+
 ## v0.3.0 (2024-02-13)
 
 - Update `finch` `0.17.0` => `0.18.0`

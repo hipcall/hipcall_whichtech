@@ -24,9 +24,44 @@ defmodule HipcallWhichtech do
 
   @detectors [
     %{
-      name: :wordpress,
-      module: HipcallWhichtech.Detector.Wordpress,
-      categories: [:cms]
+      name: :eticaretkur,
+      module: HipcallWhichtech.Detector.Eticaretkur,
+      categories: [:ecommerce]
+    },
+    %{
+      name: :hubspot,
+      module: HipcallWhichtech.Detector.Hubspot,
+      categories: [:crm]
+    },
+    %{
+      name: :ideasoft,
+      module: HipcallWhichtech.Detector.Ideasoft,
+      categories: [:ecommerce]
+    },
+    %{
+      name: :ikas,
+      module: HipcallWhichtech.Detector.Ikas,
+      categories: [:ecommerce]
+    },
+    %{
+      name: :platinmarket,
+      module: HipcallWhichtech.Detector.Platinmarket,
+      categories: [:ecommerce]
+    },
+    %{
+      name: :shopify,
+      module: HipcallWhichtech.Detector.Shopify,
+      categories: [:ecommerce]
+    },
+    %{
+      name: :ticimax,
+      module: HipcallWhichtech.Detector.Ticimax,
+      categories: [:ecommerce]
+    },
+    %{
+      name: :tsoft,
+      module: HipcallWhichtech.Detector.Tsoft,
+      categories: [:ecommerce]
     },
     %{
       name: :webflow,
@@ -39,19 +74,9 @@ defmodule HipcallWhichtech do
       categories: [:ecommerce]
     },
     %{
-      name: :hubspot,
-      module: HipcallWhichtech.Detector.Hubspot,
-      categories: [:crm]
-    },
-    %{
-      name: :shopify,
-      module: HipcallWhichtech.Detector.Shopify,
-      categories: [:ecommerce]
-    },
-    %{
-      name: :ikas,
-      module: HipcallWhichtech.Detector.Ikas,
-      categories: [:ecommerce]
+      name: :wordpress,
+      module: HipcallWhichtech.Detector.Wordpress,
+      categories: [:cms]
     }
   ]
 

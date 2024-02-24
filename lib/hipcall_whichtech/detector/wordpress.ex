@@ -8,6 +8,7 @@ defmodule HipcallWhichtech.Detector.Wordpress do
     ~s(generator" content="WordPress)
   ]
 
+  @spec detect(html_source :: binary()) :: boolean()
   def detect(html_source) do
     Enum.any?(@patters, fn pattern ->
       String.contains?(html_source, pattern)
