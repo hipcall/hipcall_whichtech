@@ -2,7 +2,7 @@ defmodule HipcallWhichtech.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/hipcall/hipcall_whichtech"
-  @version "0.3.0"
+  @version "0.4.0"
 
   def project do
     [
@@ -54,7 +54,7 @@ defmodule HipcallWhichtech.MixProject do
       canonical: "https://hex.pm/packages/hipcall_whichtech",
       source_ref: "v#{@version}",
       source_url: @source_url,
-      extras: ["README.md", "CHANGELOG.md", "LICENSE.md"]
+      extras: ["README.md", "DETECTORS.md", "CHANGELOG.md", "LICENSE.md"]
     ]
   end
 end

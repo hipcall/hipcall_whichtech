@@ -7,6 +7,7 @@ defmodule HipcallWhichtech.Detector.Shopify do
     ~s(<script id="shopify-features" type="application/json">)
   ]
 
+  @spec detect(html_source :: binary()) :: boolean()
   def detect(html_source) when is_binary(html_source) do
     Enum.any?(@patters, fn pattern ->
       String.contains?(html_source, pattern)

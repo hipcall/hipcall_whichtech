@@ -1,5 +1,8 @@
 # HipcallWhichtech
 
+[![Hex.pm Version](https://img.shields.io/hexpm/v/hipcall_whichtech)](https://hex.pm/packages/hipcall_whichtech)
+[![Hex.pm Download Total](https://img.shields.io/hexpm/dt/hipcall_whichtech)](https://hex.pm/packages/hipcall_whichtech)
+
 Find out what the website is built with using this package.
 
 ## Installation
@@ -10,7 +13,7 @@ by adding `hipcall_whichtech` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:hipcall_whichtech, "~> 0.3.0"}
+    {:hipcall_whichtech, "~> 0.4.0"}
   ]
 end
 ```
@@ -26,19 +29,10 @@ iex> {:ok, html_body} = HipcallWhichtech.request("https://woo.com/")
 iex> HipcallWhichtech.detect(html_body)
 ...> {:ok, [:wordpress, :woocommerce]}
 
-iex> {:ok, html_body} = HipcallWhichtech.request("https://www.bulutfon.com/")
+iex> {:ok, html_body} = HipcallWhichtech.request("https://www.bulutfon.com/") 
 iex> HipcallWhichtech.detect(html_body)
 ...> {:ok, [:wordpress]}
 ```
-
-## Detectors
-
-- [x] Hubspot
-- [x] Shopify
-- [x] Webflow
-- [x] Woocommerce
-- [x] Wordpress
-- [x] Ikas
 
 ## Hipcall
 
