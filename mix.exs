@@ -2,7 +2,7 @@ defmodule HipcallWhichtech.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/hipcall/hipcall_whichtech"
-  @version "0.4.0"
+  @version "0.5.0"
 
   def project do
     [
@@ -29,10 +29,10 @@ defmodule HipcallWhichtech.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:finch, "~> 0.18.0"},
+      {:finch, "~> 0.19.0"},
       {:jason, "~> 1.4"},
       {:nimble_options, "~> 1.1"},
-      {:ex_doc, "~> 0.31", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.32", only: :dev, runtime: false}
     ]
   end
 

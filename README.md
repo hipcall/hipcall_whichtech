@@ -13,7 +13,7 @@ by adding `hipcall_whichtech` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:hipcall_whichtech, "~> 0.4.0"}
+    {:hipcall_whichtech, "~> 0.5.0"}
   ]
 end
 ```
@@ -32,6 +32,10 @@ iex> HipcallWhichtech.detect(html_body)
 iex> {:ok, html_body} = HipcallWhichtech.request("https://www.bulutfon.com/") 
 iex> HipcallWhichtech.detect(html_body)
 ...> {:ok, [:wordpress]}
+
+iex> {:ok, html_body} = HipcallWhichtech.request("https://www.lab2023.com/") 
+iex> HipcallWhichtech.detect(html_body)
+...> {:ok, []}
 ```
 
 ## Hipcall

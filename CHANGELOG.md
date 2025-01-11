@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.0 (2025-01-11)
+
+- Update `finch` `0.18.0` => `0.19.0`
+
 ## v0.4.0 (2024-02-24)
 
 - Add `DETECTORS.md` to `ex_doc`.
