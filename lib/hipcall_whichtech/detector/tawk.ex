@@ -1,7 +1,6 @@
 defmodule HipcallWhichtech.Detector.Tawk do
   @moduledoc false
 
-
   @patters [
     ~s(src="https://embed.tawk.to),
     ~s(var Tawk_API)

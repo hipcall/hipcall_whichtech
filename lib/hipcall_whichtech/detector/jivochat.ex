@@ -6,7 +6,7 @@ defmodule HipcallWhichtech.Detector.Jivochat do
     ~s(<script src="//code.jivosite.com/widget/),
     ~s(jivo-iframe-container),
     ~s(<jdiv class="),
-    ~s(<jdiv id="),
+    ~s(<jdiv id=")
   ]
 
   @spec detect(html_source :: binary()) :: boolean()
