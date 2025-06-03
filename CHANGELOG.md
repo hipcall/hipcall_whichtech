@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.6.0 (2025-06-03)
+
+- Add `Jivochat` detector
+- Add `Tawk` detector
+
 ## v0.5.0 (2025-01-11)
 
 - Update `finch` `0.18.0` => `0.19.0`

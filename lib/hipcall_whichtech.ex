@@ -39,6 +39,11 @@ defmodule HipcallWhichtech do
       categories: [:ecommerce]
     },
     %{
+      name: :jivochat,
+      module: HipcallWhichtech.Detector.Jivochat,
+      categories: [:chat]
+    },
+    %{
       name: :ikas,
       module: HipcallWhichtech.Detector.Ikas,
       categories: [:ecommerce]
@@ -52,6 +57,11 @@ defmodule HipcallWhichtech do
       name: :shopify,
       module: HipcallWhichtech.Detector.Shopify,
       categories: [:ecommerce]
+    },
+    %{
+      name: :tawk,
+      module: HipcallWhichtech.Detector.Tawk,
+      categories: [:chat]
     },
     %{
       name: :ticimax,

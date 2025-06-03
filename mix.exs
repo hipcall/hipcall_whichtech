@@ -2,7 +2,7 @@ defmodule HipcallWhichtech.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/hipcall/hipcall_whichtech"
-  @version "0.5.0"
+  @version "0.6.0"
 
   def project do
     [
@@ -41,7 +41,7 @@ defmodule HipcallWhichtech.MixProject do
       maintainers: ["Onur Ozgur OZKAN"],
       licenses: ["MIT"],
       links: %{
-        "Website" => "https://www.hipcall.com/en-gb/",
+        "Website" => "https://www.hipcall.com/en/",
         "GitHub" => @source_url
       }
     ]
