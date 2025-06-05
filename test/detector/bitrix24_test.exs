@@ -34,6 +34,39 @@ defmodule HipcallWhichtech.Detector.Bitrix24Test do
       assert Bitrix24.detect(html) == true
     end
 
+    test "returns true when HTML contains data-b24-crm-button-block attribute" do
+      html = ~s(<div data-b24-crm-button-block="contact-form">Contact Us</div>)
+      assert Bitrix24.detect(html) == true
+    end
+
+    test "returns true when HTML contains data-b24-crm-button-block in button element" do
+      html =
+        ~s(<button data-b24-crm-button-block="lead-form" class="cta-button">Get Quote</button>)
+
+      assert Bitrix24.detect(html) == true
+    end
+
+    test "returns true when HTML contains data-b24-crm-button-block with empty value" do
+      html = ~s(<span data-b24-crm-button-block="">Click here</span>)
+      assert Bitrix24.detect(html) == true
+    end
+
+    test "returns true when HTML contains data-b24-crm-button-block within larger content" do
+      html = ~s(
+        <div class="contact-section">
+          <h2>Get in Touch</h2>
+          <div data-b24-crm-button-block="contact-widget" class="contact-form">
+            <form>
+              <input type="text" name="name" placeholder="Your Name">
+              <input type="email" name="email" placeholder="Your Email">
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      )
+      assert Bitrix24.detect(html) == true
+    end
+
     test "returns false when HTML does not contain any Bitrix24 patterns" do
       html = ~s(
         <html>
@@ -75,6 +108,11 @@ defmodule HipcallWhichtech.Detector.Bitrix24Test do
 
     test "is case sensitive - returns false for different case in script path" do
       html = ~s(<script src="/BITRIX/JS/IMOPENLINES/connector.js"></script>)
+      assert Bitrix24.detect(html) == false
+    end
+
+    test "is case sensitive - returns false for different case in data attribute" do
+      html = ~s(<div DATA-B24-CRM-BUTTON-BLOCK="contact-form">Contact Us</div>)
       assert Bitrix24.detect(html) == false
     end
 
@@ -147,6 +185,27 @@ defmodule HipcallWhichtech.Detector.Bitrix24Test do
             <input type="text">
             <p>Bitrix24 is not responsible for information supplied in this form. However, you can always report a violation.</p>
           </form>
+        </body>
+        </html>
+      )
+      assert Bitrix24.detect(html) == true
+    end
+
+    test "returns true when all three patterns are present" do
+      html = ~s(
+        <html>
+        <head>
+          <script src="/bitrix/js/imopenlines/connector.js"></script>
+        </head>
+        <body>
+          <div data-b24-crm-button-block="contact-form" class="contact-widget">
+            <form>
+              <input type="text" name="name">
+              <input type="email" name="email">
+              <button type="submit">Submit</button>
+            </form>
+            <small>Bitrix24 is not responsible for information supplied in this form. However, you can always report a violation.</small>
+          </div>
         </body>
         </html>
       )

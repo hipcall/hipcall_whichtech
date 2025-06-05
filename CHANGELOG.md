@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.7.1 (2025-06-05)
+
+- Add `Bitrix24` detector
+- Improve tests.
+- Improve Github Actions.
+
 ## v0.6.0 (2025-06-03)
 
 - Add `Jivochat` detector

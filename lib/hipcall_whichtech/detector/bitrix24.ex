@@ -2,6 +2,8 @@ defmodule HipcallWhichtech.Detector.Bitrix24 do
   @moduledoc false
 
   @patters [
+    ~s('https://cdn.bitrix24.com),
+    ~s(data-b24-crm-button-block),
     ~s(Bitrix24 is not responsible for information supplied in this form. However, you can always report a violation.),
     ~s(bitrix/js/imopenlines)
   ]

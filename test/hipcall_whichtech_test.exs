@@ -77,7 +77,9 @@ defmodule HipcallWhichtechTest do
       </html>
       """
 
-      assert {:ok, detected} = HipcallWhichtech.detect(html_with_multiple, exclude: [:woocommerce])
+      assert {:ok, detected} =
+               HipcallWhichtech.detect(html_with_multiple, exclude: [:woocommerce])
+
       assert :wordpress in detected
       refute :woocommerce in detected
     end
@@ -162,26 +164,31 @@ defmodule HipcallWhichtechTest do
       try do
         assert {:error, _reason} = HipcallWhichtech.request("invalid-url")
       rescue
-        ArgumentError -> :ok  # Finch raises ArgumentError for invalid URLs
+        # Finch raises ArgumentError for invalid URLs
+        ArgumentError -> :ok
       end
     end
 
     test "returns error for non-existent domain" do
-      assert {:error, _reason} = HipcallWhichtech.request("https://this-domain-does-not-exist-12345.com")
+      assert {:error, _reason} =
+               HipcallWhichtech.request("https://this-domain-does-not-exist-12345.com")
     end
 
     test "handles URI struct input" do
       uri = URI.parse("https://httpbin.org/status/404")
+
       case HipcallWhichtech.request(uri) do
         {:error, "Received status " <> _status} -> :ok
-        {:error, _other_reason} -> :ok  # Network issues, timeouts, etc.
+        # Network issues, timeouts, etc.
+        {:error, _other_reason} -> :ok
       end
     end
 
     test "returns error for non-200 status codes" do
       case HipcallWhichtech.request("https://httpbin.org/status/404") do
         {:error, "Received status " <> _status} -> :ok
-        {:error, _other_reason} -> :ok  # Network issues, timeouts, etc.
+        # Network issues, timeouts, etc.
+        {:error, _other_reason} -> :ok
       end
     end
 
@@ -262,13 +269,17 @@ defmodule HipcallWhichtechTest do
       """
 
       # Test excluding multiple detectors
-      assert {:ok, detected} = HipcallWhichtech.detect(html_with_multiple, exclude: [:woocommerce, :webflow])
+      assert {:ok, detected} =
+               HipcallWhichtech.detect(html_with_multiple, exclude: [:woocommerce, :webflow])
+
       assert :wordpress in detected
       refute :woocommerce in detected
       refute :webflow in detected
 
       # Test only with multiple detectors
-      assert {:ok, detected} = HipcallWhichtech.detect(html_with_multiple, only: [:wordpress, :webflow])
+      assert {:ok, detected} =
+               HipcallWhichtech.detect(html_with_multiple, only: [:wordpress, :webflow])
+
       assert :wordpress in detected
       assert :webflow in detected
       refute :woocommerce in detected
@@ -296,6 +307,7 @@ defmodule HipcallWhichtechTest do
 
     test "handles very large HTML content" do
       large_content = String.duplicate("<div>content</div>", 10000)
+
       html_with_wordpress = """
       <html>
         <head>
