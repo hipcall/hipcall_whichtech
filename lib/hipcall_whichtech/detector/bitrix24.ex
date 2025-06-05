@@ -1,9 +1,9 @@
-defmodule HipcallWhichtech.Detector.Ikas do
+defmodule HipcallWhichtech.Detector.Bitrix24 do
   @moduledoc false
 
   @patters [
-    ~s(src="https://cdn.myikas.com),
-    ~s(src="https://eu.myikas.com)
+    ~s(Bitrix24 is not responsible for information supplied in this form. However, you can always report a violation.),
+    ~s(bitrix/js/imopenlines)
   ]
 
   @spec detect(html_source :: binary()) :: boolean()
