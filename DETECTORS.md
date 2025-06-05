@@ -1,5 +1,6 @@
 | Name          | Categories   |
 | ------------- | ------------ |
+| Bitrix24      | [:chat, :crm]|
 | EticaretKur   | [:ecommerce] |
 | Hubspot       | [:crm]       |
 | İdeasoft      | [:ecommerce] |

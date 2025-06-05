@@ -1,0 +1,15 @@
+defmodule HipcallWhichtech.Detector.Bitrix24 do
+  @moduledoc false
+
+  @patters [
+    ~s(Bitrix24 is not responsible for information supplied in this form. However, you can always report a violation.),
+    ~s(bitrix/js/imopenlines)
+  ]
+
+  @spec detect(html_source :: binary()) :: boolean()
+  def detect(html_source) when is_binary(html_source) do
+    Enum.any?(@patters, fn pattern ->
+      String.contains?(html_source, pattern)
+    end)
+  end
+end
