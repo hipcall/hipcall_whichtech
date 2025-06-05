@@ -5,7 +5,9 @@ defmodule HipcallWhichtech.Detector.EticaretkurTest do
 
   describe "detect/1" do
     test "returns true when HTML contains Eticaret Kur link pattern" do
-      html = ~s(<a href="https://www.eticaretkur.com" target="_blank" class="rSiyah_0">Eticaret Kur</a> <a href="https://www.eticaretkur.com" target="_blank" title="E-Ticaret Paketi, E-Ticaret Sitesi, E-Ticaret Yazılımı"><b>E-Ticaret</b></a> Sistemi İle Hazırlanmıştır)
+      html =
+        ~s(<a href="https://www.eticaretkur.com" target="_blank" class="rSiyah_0">Eticaret Kur</a> <a href="https://www.eticaretkur.com" target="_blank" title="E-Ticaret Paketi, E-Ticaret Sitesi, E-Ticaret Yazılımı"><b>E-Ticaret</b></a> Sistemi İle Hazırlanmıştır)
+
       assert Eticaretkur.detect(html) == true
     end
 
@@ -78,7 +80,9 @@ defmodule HipcallWhichtech.Detector.EticaretkurTest do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s(<html><head><link href="/Themes/Default/Styles/ekur-menu.css?v=1"></head><body><div>Content</div></body></html>)
+      html =
+        ~s(<html><head><link href="/Themes/Default/Styles/ekur-menu.css?v=1"></head><body><div>Content</div></body></html>)
+
       assert Eticaretkur.detect(html) == true
     end
   end

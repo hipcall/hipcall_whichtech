@@ -5,7 +5,9 @@ defmodule HipcallWhichtech.Detector.IdeasoftTest do
 
   describe "detect/1" do
     test "returns true when HTML contains IdeaSoft copyright meta tag" do
-      html = ~s(<meta name='copyright' content='Copyright © 2007 Programlama IdeaSoft Akıllı E-Ticaret'/>)
+      html =
+        ~s(<meta name='copyright' content='Copyright © 2007 Programlama IdeaSoft Akıllı E-Ticaret'/>)
+
       assert Ideasoft.detect(html) == true
     end
 
@@ -20,9 +22,11 @@ defmodule HipcallWhichtech.Detector.IdeasoftTest do
     end
 
     test "returns true when HTML contains IdeaSoft footer pattern" do
-      html = ~s(<a href="https://www.ideasoft.com.tr" target="_blank" title="IdeaSoft" rel="noopener">IdeaSoft<sup>®</sup></a>
+      html =
+        ~s(<a href="https://www.ideasoft.com.tr" target="_blank" title="IdeaSoft" rel="noopener">IdeaSoft<sup>®</sup></a>
     <span>|</span>
     <a href="https://www.eticaret.com" target="_blank" title="E-ticaret" rel="noopener">Akıllı E-Ticaret paketleri</a> ile hazırlanmıştır.)
+
       assert Ideasoft.detect(html) == true
     end
 
@@ -88,7 +92,9 @@ defmodule HipcallWhichtech.Detector.IdeasoftTest do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s(<html><head><meta name='copyright' content='Copyright © 2007 Programlama IdeaSoft Akıllı E-Ticaret'/></head><body><div>Content</div></body></html>)
+      html =
+        ~s(<html><head><meta name='copyright' content='Copyright © 2007 Programlama IdeaSoft Akıllı E-Ticaret'/></head><body><div>Content</div></body></html>)
+
       assert Ideasoft.detect(html) == true
     end
   end

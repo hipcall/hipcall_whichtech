@@ -87,7 +87,9 @@ defmodule HipcallWhichtech.Detector.ShopifyTest do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s(<html><head><meta name="shopify-checkout-api-token" content="token"></head><body><div>Content</div></body></html>)
+      html =
+        ~s(<html><head><meta name="shopify-checkout-api-token" content="token"></head><body><div>Content</div></body></html>)
+
       assert Shopify.detect(html) == true
     end
   end

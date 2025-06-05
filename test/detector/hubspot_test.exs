@@ -76,7 +76,9 @@ defmodule HipcallWhichtech.Detector.HubspotTest do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s(<html><head><meta name="generator" content="HubSpot"></head><body><div>Content</div></body></html>)
+      html =
+        ~s(<html><head><meta name="generator" content="HubSpot"></head><body><div>Content</div></body></html>)
+
       assert Hubspot.detect(html) == true
     end
   end

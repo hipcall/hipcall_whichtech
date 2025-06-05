@@ -79,7 +79,9 @@ defmodule HipcallWhichtech.Detector.WoocommerceTest do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s(<html><head><meta name="generator" content="WooCommerce 7.1"></head><body><div>Content</div></body></html>)
+      html =
+        ~s(<html><head><meta name="generator" content="WooCommerce 7.1"></head><body><div>Content</div></body></html>)
+
       assert Woocommerce.detect(html) == true
     end
   end

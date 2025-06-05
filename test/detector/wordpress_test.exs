@@ -91,12 +91,16 @@ defmodule HipcallWhichtech.Detector.WordpressTest do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s(<html><head><script src="/wp-content/themes/theme/app.js"></script></head><body><div>Content</div></body></html>)
+      html =
+        ~s(<html><head><script src="/wp-content/themes/theme/app.js"></script></head><body><div>Content</div></body></html>)
+
       assert Wordpress.detect(html) == true
     end
 
     test "detects wp-json in REST API link" do
-      html = ~s(<link rel="alternate" type="application/json" href="https://example.com/wp-json/wp/v2/posts">)
+      html =
+        ~s(<link rel="alternate" type="application/json" href="https://example.com/wp-json/wp/v2/posts">)
+
       assert Wordpress.detect(html) == true
     end
   end

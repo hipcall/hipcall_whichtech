@@ -5,7 +5,9 @@ defmodule HipcallWhichtech.Detector.TicimaxTest do
 
   describe "detect/1" do
     test "returns true when HTML contains ticimax.cloud preload link pattern" do
-      html = ~s(<link rel="preload" as="image" href="https://static.ticimax.cloud/images/logo.png">)
+      html =
+        ~s(<link rel="preload" as="image" href="https://static.ticimax.cloud/images/logo.png">)
+
       assert Ticimax.detect(html) == true
     end
 
@@ -15,7 +17,9 @@ defmodule HipcallWhichtech.Detector.TicimaxTest do
     end
 
     test "returns true when HTML contains Ticimax footer link pattern" do
-      html = ~s(<a rel="sponsored" class="mobilTicimaxLogo" href="https://www.ticimax.com" title="Ticimax E-Ticaret Sistemleri" target="_blank">)
+      html =
+        ~s(<a rel="sponsored" class="mobilTicimaxLogo" href="https://www.ticimax.com" title="Ticimax E-Ticaret Sistemleri" target="_blank">)
+
       assert Ticimax.detect(html) == true
     end
 
@@ -81,7 +85,9 @@ defmodule HipcallWhichtech.Detector.TicimaxTest do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s(<html><head><link rel="icon" href="https://static.ticimax.cloud/icon.ico"></head><body><div>Content</div></body></html>)
+      html =
+        ~s(<html><head><link rel="icon" href="https://static.ticimax.cloud/icon.ico"></head><body><div>Content</div></body></html>)
+
       assert Ticimax.detect(html) == true
     end
   end

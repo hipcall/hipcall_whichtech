@@ -10,7 +10,9 @@ defmodule HipcallWhichtech.Detector.PlatinmarketTest do
     end
 
     test "returns true when HTML contains PlatinMarket footer pattern" do
-      html = ~s(<p><a href="//www.platinmarket.com" target="_blank" rel="noopener" title="e-ticaret eticaret">PlatinMarket<sup>®</sup> E-Ticaret Sistemi</a> İle Hazırlanmıştır.</p>)
+      html =
+        ~s(<p><a href="//www.platinmarket.com" target="_blank" rel="noopener" title="e-ticaret eticaret">PlatinMarket<sup>®</sup> E-Ticaret Sistemi</a> İle Hazırlanmıştır.</p>)
+
       assert Platinmarket.detect(html) == true
     end
 
@@ -81,7 +83,9 @@ defmodule HipcallWhichtech.Detector.PlatinmarketTest do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s(<html><head><link rel="icon" href="https://platincdn.com/icon.ico"></head><body><div>Content</div></body></html>)
+      html =
+        ~s(<html><head><link rel="icon" href="https://platincdn.com/icon.ico"></head><body><div>Content</div></body></html>)
+
       assert Platinmarket.detect(html) == true
     end
   end

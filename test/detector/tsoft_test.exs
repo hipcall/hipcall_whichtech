@@ -5,7 +5,9 @@ defmodule HipcallWhichtech.Detector.TsoftTest do
 
   describe "detect/1" do
     test "returns true when HTML contains tsoft-icon font pattern" do
-      html = ~s(<link rel="preload" href="/css/fonts/tsoft-icon.woff2?v=1" type="font/woff2" crossorigin>)
+      html =
+        ~s(<link rel="preload" href="/css/fonts/tsoft-icon.woff2?v=1" type="font/woff2" crossorigin>)
+
       assert Tsoft.detect(html) == true
     end
 
@@ -20,9 +22,11 @@ defmodule HipcallWhichtech.Detector.TsoftTest do
     end
 
     test "returns true when HTML contains T-Soft footer pattern" do
-      html = ~s(<a href="https://www.tsoft.com.tr" target="_blank" title="T-Soft E-ticaret Sistemleri">
+      html =
+        ~s(<a href="https://www.tsoft.com.tr" target="_blank" title="T-Soft E-ticaret Sistemleri">
     <span>T</span>-Soft
     </a> <a href="https://www.tsoft.com.tr" target="_blank" title="E-ticaret">E-Ticaret</a> Sistemleriyle Hazırlanmıştır.)
+
       assert Tsoft.detect(html) == true
     end
 
@@ -88,7 +92,9 @@ defmodule HipcallWhichtech.Detector.TsoftTest do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s[<html><head><script>TSOFT_APPS.page.start();</script></head><body><div>Content</div></body></html>]
+      html =
+        ~s[<html><head><script>TSOFT_APPS.page.start();</script></head><body><div>Content</div></body></html>]
+
       assert Tsoft.detect(html) == true
     end
   end

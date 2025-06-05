@@ -93,7 +93,9 @@ defmodule HipcallWhichtech.Detector.JivochatTest do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s(<html><head><script src="//code.jivosite.com/widget/min.js"></script></head><body><div>Content</div></body></html>)
+      html =
+        ~s(<html><head><script src="//code.jivosite.com/widget/min.js"></script></head><body><div>Content</div></body></html>)
+
       assert Jivochat.detect(html) == true
     end
   end

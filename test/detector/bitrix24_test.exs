@@ -5,7 +5,9 @@ defmodule HipcallWhichtech.Detector.Bitrix24Test do
 
   describe "detect/1" do
     test "returns true when HTML contains Bitrix24 disclaimer text" do
-      html = ~s(Bitrix24 is not responsible for information supplied in this form. However, you can always report a violation.)
+      html =
+        ~s(Bitrix24 is not responsible for information supplied in this form. However, you can always report a violation.)
+
       assert Bitrix24.detect(html) == true
     end
 
@@ -15,7 +17,9 @@ defmodule HipcallWhichtech.Detector.Bitrix24Test do
     end
 
     test "returns true when HTML contains bitrix/js/imopenlines in script tag" do
-      html = ~s(<script type="text/javascript" src="https://example.com/bitrix/js/imopenlines/widget.js"></script>)
+      html =
+        ~s(<script type="text/javascript" src="https://example.com/bitrix/js/imopenlines/widget.js"></script>)
+
       assert Bitrix24.detect(html) == true
     end
 
@@ -63,7 +67,9 @@ defmodule HipcallWhichtech.Detector.Bitrix24Test do
     end
 
     test "is case sensitive - returns false for different case in disclaimer" do
-      html = ~s(bitrix24 is not responsible for information supplied in this form. however, you can always report a violation.)
+      html =
+        ~s(bitrix24 is not responsible for information supplied in this form. however, you can always report a violation.)
+
       assert Bitrix24.detect(html) == false
     end
 
@@ -117,12 +123,16 @@ defmodule HipcallWhichtech.Detector.Bitrix24Test do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s(<html><head></head><body><div>Content</div><script src="/bitrix/js/imopenlines/chat.js"></script></body></html>)
+      html =
+        ~s(<html><head></head><body><div>Content</div><script src="/bitrix/js/imopenlines/chat.js"></script></body></html>)
+
       assert Bitrix24.detect(html) == true
     end
 
     test "detects disclaimer in minified HTML" do
-      html = ~s(<html><body><form><input type="text"><small>Bitrix24 is not responsible for information supplied in this form. However, you can always report a violation.</small></form></body></html>)
+      html =
+        ~s(<html><body><form><input type="text"><small>Bitrix24 is not responsible for information supplied in this form. However, you can always report a violation.</small></form></body></html>)
+
       assert Bitrix24.detect(html) == true
     end
 

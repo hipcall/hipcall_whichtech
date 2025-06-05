@@ -86,7 +86,9 @@ defmodule HipcallWhichtech.Detector.IkasTest do
     end
 
     test "detects pattern in minified HTML" do
-      html = ~s(<html><head><script src="https://cdn.myikas.com/min.js"></script></head><body><div>Content</div></body></html>)
+      html =
+        ~s(<html><head><script src="https://cdn.myikas.com/min.js"></script></head><body><div>Content</div></body></html>)
+
       assert Ikas.detect(html) == true
     end
   end
