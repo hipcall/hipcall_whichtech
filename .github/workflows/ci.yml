@@ -48,7 +48,11 @@ jobs:
             _build
           key: ${{ matrix.otp }}-${{ matrix.elixir }}-build
       - run: mix compile --warnings-as-errors
-      - run: mix test
+      - name: Tests & Coverage
+        uses: josecfreittas/elixir-coverage-feedback-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          coverage_threshold: 90
   publish:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
