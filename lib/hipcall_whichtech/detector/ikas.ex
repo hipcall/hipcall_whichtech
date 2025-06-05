@@ -2,7 +2,8 @@ defmodule HipcallWhichtech.Detector.Ikas do
   @moduledoc false
 
   @patters [
-    ~s(src="https://cdn.myikas.com)
+    ~s(src="https://cdn.myikas.com),
+    ~s(src="https://eu.myikas.com)
   ]
 
   @spec detect(html_source :: binary()) :: boolean()
