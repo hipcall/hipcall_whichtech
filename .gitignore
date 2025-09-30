@@ -25,3 +25,4 @@ hipcall_whichtech-*.tar
 # Temporary files, for example, from tests.
 /tmp/
 NOTES.md
+.tool-versions

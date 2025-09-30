@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.8.0 (2025-09-30)
+
+- Add `AloTech` detector
+
 ## v0.7.1 (2025-06-05)
 
 - Add `Bitrix24` detector

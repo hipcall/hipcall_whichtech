@@ -1,5 +1,6 @@
 | Name          | Categories   |
 | ------------- | ------------ |
+| AloTech       | [:chat]      |
 | Bitrix24      | [:chat, :crm]|
 | EticaretKur   | [:ecommerce] |
 | Hubspot       | [:crm]       |
