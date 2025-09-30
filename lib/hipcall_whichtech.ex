@@ -24,6 +24,11 @@ defmodule HipcallWhichtech do
 
   @detectors [
     %{
+      name: :alotech,
+      module: HipcallWhichtech.Detector.AloTech,
+      categories: [:chat]
+    },
+    %{
       name: :bitrix24,
       module: HipcallWhichtech.Detector.Bitrix24,
       categories: [:chat, :crm]
