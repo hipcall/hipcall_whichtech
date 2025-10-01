@@ -39,6 +39,11 @@ defmodule HipcallWhichtech do
       categories: [:ecommerce]
     },
     %{
+      name: :hipcallchat,
+      module: HipcallWhichtech.Detector.HipcallChat,
+      categories: [:chat]
+    },
+    %{
       name: :hubspot,
       module: HipcallWhichtech.Detector.Hubspot,
       categories: [:crm]
