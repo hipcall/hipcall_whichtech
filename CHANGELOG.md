@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.9.0 (2025-10-01)
+
+- Add `HipcallChat` detector
+
 ## v0.8.0 (2025-09-30)
 
 - Add `AloTech` detector

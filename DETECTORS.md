@@ -3,6 +3,7 @@
 | AloTech       | [:chat]      |
 | Bitrix24      | [:chat, :crm]|
 | EticaretKur   | [:ecommerce] |
+| Hipcall Chat  | [:chat]      |
 | Hubspot       | [:crm]       |
 | İdeasoft      | [:ecommerce] |
 | Ikas          | [:ecommerce] |
