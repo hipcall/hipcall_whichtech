@@ -46,5 +46,4 @@ defmodule HipcallWhichtech.Detector.HipcallChatTest do
       assert HipcallChat.detect(html) == false
     end
   end
-
 end
