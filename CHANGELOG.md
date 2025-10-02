@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.9.1 (2025-10-02)
+
+- Fix `HipcallChat` detector
+
 ## v0.9.0 (2025-10-01)
 
 - Add `HipcallChat` detector
