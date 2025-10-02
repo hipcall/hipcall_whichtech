@@ -2,7 +2,8 @@ defmodule HipcallWhichtech.Detector.HipcallChat do
   @moduledoc false
 
   @patterns [
-    ~s(ea5e6c8a-0810-49e3-892c-5bcb6aadf231)
+    ~s(https://use.hipcall.com.tr/widget/),
+    ~s(w['HipcallWidget'])
   ]
 
   @spec detect(html_source :: binary()) :: boolean()
