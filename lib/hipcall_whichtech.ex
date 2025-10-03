@@ -34,6 +34,11 @@ defmodule HipcallWhichtech do
       categories: [:chat, :crm]
     },
     %{
+      name: :crisp,
+      module: HipcallWhichtech.Detector.Crisp,
+      categories: [:chat]
+    },
+    %{
       name: :eticaretkur,
       module: HipcallWhichtech.Detector.Eticaretkur,
       categories: [:ecommerce]
@@ -102,6 +107,11 @@ defmodule HipcallWhichtech do
       name: :wordpress,
       module: HipcallWhichtech.Detector.Wordpress,
       categories: [:cms]
+    },
+    %{
+      name: :zendesk,
+      module: HipcallWhichtech.Detector.Zendesk,
+      categories: [:chat, :crm]
     }
   ]
 
