@@ -2,6 +2,7 @@
 | ------------- | ------------ |
 | AloTech       | [:chat]      |
 | Bitrix24      | [:chat, :crm]|
+| Crisp         | [:chat]      |
 | EticaretKur   | [:ecommerce] |
 | Hipcall Chat  | [:chat]      |
 | Hubspot       | [:crm]       |
@@ -16,3 +17,4 @@
 | Webflow       | [:cms]       |
 | Woocommerce   | [:ecommerce] |
 | Wordpress     | [:cms]       |
+| Zendesk       | [:chat, :crm]|
