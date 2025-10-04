@@ -38,10 +38,10 @@ defmodule HipcallWhichtech.MixProject do
 
   def package do
     [
-      maintainers: ["Onur Ozgur OZKAN"],
+      maintainers: ["Onur Ozgur OZKAN", "Meliha Cakmak"],
       licenses: ["MIT"],
       links: %{
-        "Website" => "https://www.hipcall.com/en/",
+        "Website" => "https://whichtech.hipcall.com/",
         "GitHub" => @source_url
       }
     ]
