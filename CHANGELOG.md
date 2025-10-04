@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.10.0 (2025-10-03)
+
+- Add `Crisp` detector
+- Add `Zendesk` detector
+
 ## v0.9.1 (2025-10-02)
 
 - Fix `HipcallChat` detector
