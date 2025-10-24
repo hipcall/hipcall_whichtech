@@ -32,7 +32,7 @@ defmodule HipcallWhichtech.MixProject do
       {:finch, "~> 0.19.0"},
       {:jason, "~> 1.4"},
       {:nimble_options, "~> 1.1"},
-      {:ex_doc, "~> 0.32", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.39", only: :dev, runtime: false}
     ]
   end
 

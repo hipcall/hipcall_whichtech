@@ -28,5 +28,35 @@ defmodule HipcallWhichtech.Detector.CrispTest do
       html = ~s(https://client.crisp.example.com/)
       assert Crisp.detect(html) == false
     end
+
+    test "returns true when HTML contains crisp-chatbox-button id pattern" do
+      html = ~s(<div id="crisp-chatbox-button"></div>)
+      assert Crisp.detect(html) == true
+    end
+
+    test "returns true when HTML contains crisp-chatbox-chat id pattern" do
+      html = ~s(<div id="crisp-chatbox-chat"></div>)
+      assert Crisp.detect(html) == true
+    end
+
+    test "returns true when HTML contains crisp-client class pattern" do
+      html = ~s(<div class="crisp-client"></div>)
+      assert Crisp.detect(html) == true
+    end
+
+    test "returns true when HTML contains crisp-chatbox-chat without id attribute" do
+      html = ~s(<div>crisp-chatbox-chat</div>)
+      assert Crisp.detect(html) == true
+    end
+
+    test "returns true when HTML contains components/crisp component reference" do
+      html = ~s(<script>import Crisp from "components/crisp";</script>)
+      assert Crisp.detect(html) == true
+    end
+
+    test "returns true when HTML contains ../../components/crisp component reference" do
+      html = ~s(<script>import Crisp from "../../components/crisp";</script>)
+      assert Crisp.detect(html) == true
+    end
   end
 end
