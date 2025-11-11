@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.11.0
+
+- Add `Tidio` detector
+
 ## v0.10.0 (2025-10-03)
 
 - Add `Crisp` detector
