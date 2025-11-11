@@ -12,6 +12,7 @@
 | Platin Market | [:ecommerce] |
 | Shopify       | [:ecommerce] |
 | Ticimax       | [:ecommerce] |
+| Tidio         | [:chat]      |
 | Tsoft         | [:ecommerce] |
 | Tawk          | [:chat]      |
 | Webflow       | [:cms]       |
