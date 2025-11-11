@@ -1,7 +1,7 @@
 defmodule HipcallWhichtech.Detector.Ideasoft do
   @moduledoc false
 
-  @patters [
+  @patterns [
     ~s(<meta name='copyright' content='Copyright © 2007 Programlama IdeaSoft Akıllı E-Ticaret'/>),
     ~s(<img src="//ideacdn.net/idea/),
     ~s(<script type="text/javascript" src="//ideacdn.net/),
@@ -12,7 +12,7 @@ defmodule HipcallWhichtech.Detector.Ideasoft do
 
   @spec detect(html_source :: binary()) :: boolean()
   def detect(html_source) when is_binary(html_source) do
-    Enum.any?(@patters, fn pattern ->
+    Enum.any?(@patterns, fn pattern ->
       String.contains?(html_source, pattern)
     end)
   end

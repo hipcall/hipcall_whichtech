@@ -1,7 +1,7 @@
 defmodule HipcallWhichtech.Detector.Tsoft do
   @moduledoc false
 
-  @patters [
+  @patterns [
     ~s(/css/fonts/tsoft-icon.woff2?v=1" type="font/woff2" crossorigin>),
     ~s(TSOFT_APPS.page),
     ~s(<script src="/js/tsoftapps/),
@@ -12,7 +12,7 @@ defmodule HipcallWhichtech.Detector.Tsoft do
 
   @spec detect(html_source :: binary()) :: boolean()
   def detect(html_source) when is_binary(html_source) do
-    Enum.any?(@patters, fn pattern ->
+    Enum.any?(@patterns, fn pattern ->
       String.contains?(html_source, pattern)
     end)
   end

@@ -3,7 +3,7 @@ defmodule HipcallWhichtech.Detector.Tidio do
 
   @patterns [
     ~s(src="//code.tidio.co/"),
-    ~s(src: url(https://code.tidio.co/))
+    ~s(aria-label="Powered by Tidio.")
   ]
 
   @spec detect(html_source :: binary()) :: boolean()
