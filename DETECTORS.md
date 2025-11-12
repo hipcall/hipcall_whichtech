@@ -15,6 +15,7 @@
 | Tsoft         | [:ecommerce] |
 | Tawk          | [:chat]      |
 | Webflow       | [:cms]       |
+| Wix           | [:chat, :cms]|
 | Woocommerce   | [:ecommerce] |
 | Wordpress     | [:cms]       |
 | Zendesk       | [:chat, :crm]|
