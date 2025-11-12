@@ -89,6 +89,11 @@ defmodule HipcallWhichtech do
       categories: [:ecommerce]
     },
     %{
+      name: :tidio,
+      module: HipcallWhichtech.Detector.Tidio,
+      categories: [:chat]
+    },
+    %{
       name: :tsoft,
       module: HipcallWhichtech.Detector.Tsoft,
       categories: [:ecommerce]

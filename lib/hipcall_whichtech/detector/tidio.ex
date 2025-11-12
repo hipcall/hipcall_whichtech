@@ -1,8 +1,9 @@
-defmodule HipcallWhichtech.Detector.Hubspot do
+defmodule HipcallWhichtech.Detector.Tidio do
   @moduledoc false
 
   @patterns [
-    ~s(generator" content="HubSpot)
+    ~s(src="//code.tidio.co/"),
+    ~s(aria-label="Powered by Tidio.")
   ]
 
   @spec detect(html_source :: binary()) :: boolean()

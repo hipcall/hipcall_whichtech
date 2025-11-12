@@ -1,7 +1,7 @@
 defmodule HipcallWhichtech.Detector.Wordpress do
   @moduledoc false
 
-  @patters [
+  @patterns [
     "/wp-content/",
     "/wp-includes/",
     "wp-json",
@@ -10,7 +10,7 @@ defmodule HipcallWhichtech.Detector.Wordpress do
 
   @spec detect(html_source :: binary()) :: boolean()
   def detect(html_source) do
-    Enum.any?(@patters, fn pattern ->
+    Enum.any?(@patterns, fn pattern ->
       String.contains?(html_source, pattern)
     end)
   end

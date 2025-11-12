@@ -1,7 +1,8 @@
 # Changelog
 
-## v0.11.0 (2025-10-27)
+## v0.11.0 (2025-11-12)
 
+- Add `Tidio` detector
 - Add `Wix` detector
 
 ## v0.10.0 (2025-10-03)
