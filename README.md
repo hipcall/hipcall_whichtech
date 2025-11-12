@@ -13,7 +13,7 @@ by adding `hipcall_whichtech` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:hipcall_whichtech, "~> 0.11.0"}
+    {:hipcall_whichtech, "~> 0.12.0"}
   ]
 end
 ```
