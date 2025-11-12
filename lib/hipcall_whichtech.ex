@@ -114,6 +114,11 @@ defmodule HipcallWhichtech do
       categories: [:cms]
     },
     %{
+      name: :wix,
+      module: HipcallWhichtech.Detector.Wix,
+      categories: [:chat, :cms]
+    },
+    %{
       name: :zendesk,
       module: HipcallWhichtech.Detector.Zendesk,
       categories: [:chat, :crm]
