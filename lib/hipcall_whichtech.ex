@@ -69,6 +69,11 @@ defmodule HipcallWhichtech do
       categories: [:ecommerce]
     },
     %{
+      name: :kommo,
+      module: HipcallWhichtech.Detector.Kommo,
+      categories: [:chat, :crm]
+    },
+    %{
       name: :platinmarket,
       module: HipcallWhichtech.Detector.Platinmarket,
       categories: [:ecommerce]
