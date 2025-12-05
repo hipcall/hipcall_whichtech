@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.13.0 (2025-12-05)
+
+- Add `Kommo` detector
+
 ## v0.12.0 (2025-11-12)
 
 - Add `Tidio` detector
