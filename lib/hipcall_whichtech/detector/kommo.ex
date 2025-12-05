@@ -3,13 +3,8 @@ defmodule HipcallWhichtech.Detector.Kommo do
 
   @patterns [
     ~s(https://gso.kommo.com/),
-    ~s(https://www.kommo.com/),
     ~s(https://drive-g.kommo.com/),
-    ~s(wss://lc-en.kommo.com/),
-    ~s(Kommo CRM Plugin social network list),
-    ~s(Kommo Live Chat),
-    ~s(Made by Kommo),
-    ~s(Kommo)
+    ~s(wss://lc-en.kommo.com/)
   ]
 
   @spec detect(html_source :: binary()) :: boolean()
