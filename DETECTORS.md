@@ -9,6 +9,7 @@
 | İdeasoft      | [:ecommerce] |
 | Ikas          | [:ecommerce] |
 | Jivochat      | [:chat]      |
+| Kommo         | [:chat, :crm]|
 | Platin Market | [:ecommerce] |
 | Shopify       | [:ecommerce] |
 | Ticimax       | [:ecommerce] |
