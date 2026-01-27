@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.13.1 (2026-01-27)
+
+- Update `finch` `0.19.0` => `0.21.0`
+- Update `ex_doc` `0.39` => `0.40`
+
 ## v0.13.0 (2025-12-05)
 
 - Add `Kommo` detector
