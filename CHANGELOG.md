@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.13.2 (2026-01-27)
+
+- Update version, fix README.md version reference
+
 ## v0.13.1 (2026-01-27)
 
 - Update `finch` `0.19.0` => `0.21.0`
