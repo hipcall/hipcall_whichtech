@@ -2,7 +2,7 @@ defmodule HipcallWhichtech.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/hipcall/hipcall_whichtech"
-  @version "0.13.2"
+  @version "0.13.3"
 
   def project do
     [
