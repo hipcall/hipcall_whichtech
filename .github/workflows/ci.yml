@@ -16,15 +16,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - elixir: 1.15.x
-            otp: 25
-            os: ubuntu-22.04
-          - elixir: 1.16.x
-            otp: 26
-            os: ubuntu-latest
           - elixir: 1.17.x
             otp: 27
             os: ubuntu-22.04
+          - elixir: 1.18.x
+            otp: 27
+            os: ubuntu-latest
+          - elixir: 1.19.x
+            otp: 28
+            os: ubuntu-latest
+          - elixir: 1.20.0-rc.4
+            otp: 28.4.2
+            os: ubuntu-latest
             warnings_as_errors: true
     env:
       MIX_ENV: test
@@ -48,11 +51,23 @@ jobs:
             _build
           key: ${{ matrix.otp }}-${{ matrix.elixir }}-build
       - run: mix compile --warnings-as-errors
+
       - name: Tests & Coverage
-        uses: josecfreittas/elixir-coverage-feedback-action@v1
+        run: |
+          mix test --cover --export-coverage default
+          mix test.coverage > coverage.out 2>&1 || true
+
+      - name: Mix Coverage
+        if: always()
+        uses: hipcall/mix-coverage-action@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          coverage_threshold: 90
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coverage-file: coverage.out
+          minimum-coverage: 90
+          # All matrix versions gate on the threshold. Only the newest Elixir
+          # job posts the sticky comment so the 4 jobs don't race on the same
+          # comment marker.
+          comment: ${{ startsWith(matrix.elixir, '1.20') && 'sticky' || 'off' }}
   publish:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')

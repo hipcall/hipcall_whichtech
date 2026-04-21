@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.13.3 (2026-04-21)
+
+- Follow HTTP 301/302/303/307/308 redirects in `HipcallWhichtech.request/1` (up to 5 hops)
+- Require Elixir `~> 1.17`; test matrix extended up to Elixir 1.20.0-rc.4 / OTP 28.4.2
+- Bump transitive `telemetry` `1.3.0` => `1.4.1`
+- Add `bandit` and `plug` as `only: :test` deps for an in-process HTTP test server covering the redirect behaviour
+
 ## v0.13.2 (2026-01-27)
 
 - Update version, fix README.md version reference

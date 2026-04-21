@@ -2,7 +2,7 @@ defmodule HipcallWhichtech.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/hipcall/hipcall_whichtech"
-  @version "0.13.2"
+  @version "0.13.3"
 
   def project do
     [
@@ -10,7 +10,7 @@ defmodule HipcallWhichtech.MixProject do
       name: "HipcallWhichtech",
       description: "Find out what the website is built with.",
       version: @version,
-      elixir: "~> 1.14",
+      elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
@@ -32,7 +32,9 @@ defmodule HipcallWhichtech.MixProject do
       {:finch, "~> 0.21.0"},
       {:jason, "~> 1.4"},
       {:nimble_options, "~> 1.1"},
-      {:ex_doc, "~> 0.40", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.40", only: :dev, runtime: false},
+      {:bandit, "~> 1.0", only: :test},
+      {:plug, "~> 1.18", only: :test}
     ]
   end
 
