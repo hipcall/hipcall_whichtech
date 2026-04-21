@@ -10,7 +10,7 @@ defmodule HipcallWhichtech.MixProject do
       name: "HipcallWhichtech",
       description: "Find out what the website is built with.",
       version: @version,
-      elixir: "~> 1.14",
+      elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
