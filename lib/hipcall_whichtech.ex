@@ -5,6 +5,8 @@ defmodule HipcallWhichtech do
 
   @type url() :: String.t() | URI.t()
 
+  @max_redirects 5
+
   @detect_schema [
     exclude: [
       type: {:list, :atom},
@@ -215,9 +217,25 @@ defmodule HipcallWhichtech do
   """
   @spec request(url()) :: {:ok, String.t()} | {:error, any()}
   def request(url) do
+    do_request(url, @max_redirects)
+  end
+
+  defp do_request(_url, 0), do: {:error, "Too many redirects"}
+
+  defp do_request(url, redirects_left) do
     case Finch.build(:get, url) |> Finch.request(HipcallWhichtechFinch) do
       {:ok, %Finch.Response{status: 200, body: body}} ->
         {:ok, body}
+
+      {:ok, %Finch.Response{status: status, headers: headers}}
+      when status in [301, 302, 303, 307, 308] ->
+        case find_location(headers) do
+          nil ->
+            {:error, "Received status #{status} but no Location header"}
+
+          location ->
+            url |> resolve_redirect(location) |> do_request(redirects_left - 1)
+        end
 
       {:ok, %Finch.Response{status: status}} ->
         {:error, "Received status #{status}"}
@@ -225,6 +243,16 @@ defmodule HipcallWhichtech do
       {:error, reason} ->
         {:error, reason}
     end
+  end
+
+  defp find_location(headers) do
+    Enum.find_value(headers, fn {name, value} ->
+      if String.downcase(name) == "location", do: value
+    end)
+  end
+
+  defp resolve_redirect(base, location) do
+    base |> URI.parse() |> URI.merge(location) |> URI.to_string()
   end
 
   defp set_detectors(options) do

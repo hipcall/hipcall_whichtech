@@ -286,6 +286,107 @@ defmodule HipcallWhichtechTest do
     end
   end
 
+  describe "request/1 redirect handling" do
+    setup do
+      Application.ensure_all_started(:hipcall_whichtech)
+      :ok
+    end
+
+    test "follows a 301 redirect to final 200" do
+      {url, stop} =
+        HipcallWhichtech.TestServer.start([
+          {301, [{"location", "/final"}], ""},
+          {200, [], "hello"}
+        ])
+
+      assert {:ok, "hello"} = HipcallWhichtech.request(url)
+      stop.()
+    end
+
+    test "follows a 302 redirect" do
+      {url, stop} =
+        HipcallWhichtech.TestServer.start([
+          {302, [{"location", "/final"}], ""},
+          {200, [], "ok"}
+        ])
+
+      assert {:ok, "ok"} = HipcallWhichtech.request(url)
+      stop.()
+    end
+
+    test "follows 303, 307, and 308 redirects" do
+      for status <- [303, 307, 308] do
+        {url, stop} =
+          HipcallWhichtech.TestServer.start([
+            {status, [{"location", "/final"}], ""},
+            {200, [], "done"}
+          ])
+
+        assert {:ok, "done"} = HipcallWhichtech.request(url)
+        stop.()
+      end
+    end
+
+    test "resolves relative Location against the current URL" do
+      {url, stop} =
+        HipcallWhichtech.TestServer.start([
+          {301, [{"location", "/a/b/c"}], ""},
+          {200, [], "yay"}
+        ])
+
+      assert {:ok, "yay"} = HipcallWhichtech.request(url <> "/start")
+      stop.()
+    end
+
+    test "resolves absolute Location targeting same host" do
+      {url, stop} =
+        HipcallWhichtech.TestServer.start(fn base_url ->
+          [
+            {301, [{"location", base_url <> "/elsewhere"}], ""},
+            {200, [], "good"}
+          ]
+        end)
+
+      assert {:ok, "good"} = HipcallWhichtech.request(url)
+      stop.()
+    end
+
+    test "matches Location header case-insensitively" do
+      {url, stop} =
+        HipcallWhichtech.TestServer.start([
+          {302, [{"LOCATION", "/final"}], ""},
+          {200, [], "hi"}
+        ])
+
+      assert {:ok, "hi"} = HipcallWhichtech.request(url)
+      stop.()
+    end
+
+    test "returns error when redirect has no Location header" do
+      {url, stop} = HipcallWhichtech.TestServer.start([{301, [], ""}])
+
+      assert {:error, "Received status 301 but no Location header"} =
+               HipcallWhichtech.request(url)
+
+      stop.()
+    end
+
+    test "returns error after exceeding the redirect cap" do
+      redirect = {302, [{"location", "/next"}], ""}
+      {url, stop} = HipcallWhichtech.TestServer.start(List.duplicate(redirect, 6))
+
+      assert {:error, "Too many redirects"} = HipcallWhichtech.request(url)
+      stop.()
+    end
+
+    test "still returns error for non-3xx / non-200 status" do
+      {url, stop} = HipcallWhichtech.TestServer.start([{404, [], ""}])
+
+      assert {:error, "Received status 404"} = HipcallWhichtech.request(url)
+      stop.()
+    end
+  end
+
   describe "edge cases" do
     test "handles empty HTML string" do
       assert {:ok, []} = HipcallWhichtech.detect("")
